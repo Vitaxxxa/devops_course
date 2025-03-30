@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  ubuntu_systemd:
+    build: .  # будуємо образ з Dockerfile у поточній папці
+    container_name: ubuntu_systemd
+    privileged: true  # надаємо привілейований режим для systemd і брандмауера
+    volumes:
+      - ./mount_volume:/mnt/volume  # монтуємо папку host для зберігання образу розділу
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tty: true
